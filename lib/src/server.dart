@@ -61,8 +61,12 @@ class TodoService extends TodoServiceBase {
 
 class Server {
   Future<void> main(List<String> args) async {
-    final server = grpc.Server([TodoService()]);
-    await server.serve(port: 50051);
+    await start([TodoService()]);
+  }
+
+  Future<void> start(List<grpc.Service> services, {port = 50051}) async {
+    final server = grpc.Server(services);
+    await server.serve(port: port);
     print('Server listening on port ${server.port}...');
   }
 }

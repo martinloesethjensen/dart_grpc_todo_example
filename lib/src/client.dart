@@ -4,7 +4,8 @@ import 'package:grpc/grpc.dart';
 import 'generated/todo.pbgrpc.dart';
 
 class Client {
-  TodoClient stub;
+  ClientChannel _channel;
+  TodoClient _stub;
 
   final todos = [
     TodoItem()
@@ -22,19 +23,13 @@ class Client {
   ];
 
   Future<void> main(List<String> args) async {
-    final channel = ClientChannel(
-      'localhost',
-      port: 50051,
-      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-    );
-
-    stub = TodoClient(channel);
+    connect();
 
     final num = args.length > 0 ? args[0] : '0';
 
     switch (num) {
       case '1':
-        await runCreateTodo();
+        await runCreateTodo(TodoItem());
         break;
       case '2':
         await runReadTodos();
@@ -54,16 +49,11 @@ class Client {
       default:
     }
 
-    await channel.shutdown();
+    await _channel.shutdown();
   }
 
-  Future<void> runCreateTodo() async {
-    TodoItem todoItem = TodoItem();
-
-    print('Create todo text:');
-    todoItem.text = stdin.readLineSync();
-
-    await stub.createTodo(todoItem);
+  Future<void> runCreateTodo(TodoItem todoItem) async {
+    await _stub.createTodo(todoItem);
   }
 
   Future<void> runCreateTodos() async {
@@ -71,11 +61,11 @@ class Client {
     for (final todo in todos) {
       todoItems.items.add(todo);
     }
-    await stub.createTodoItems(todoItems);
+    await _stub.createTodoItems(todoItems);
   }
 
   Future<void> runReadTodos() async {
-    final todos = await stub.readTodos(voidNoParam());
+    final todos = await _stub.readTodos(voidNoParam());
     todos.items.forEach(print);
   }
 
@@ -87,11 +77,11 @@ class Client {
       }
     }
 
-    await stub.createTodosStream(outgoingTodos());
+    await _stub.createTodosStream(outgoingTodos());
   }
 
   Future<void> runReadTodosStream() async {
-    await for (final todo in stub.readTodosStream(voidNoParam())) {
+    await for (final todo in _stub.readTodosStream(voidNoParam())) {
       print(todo);
     }
   }
@@ -116,9 +106,19 @@ class Client {
       }
     }
 
-    final call = stub.todoChat(outgoingTodos());
+    final call = _stub.todoChat(outgoingTodos());
     await for (var todoBack in call) {
       print('Got Todo back from server: $todoBack');
     }
+  }
+
+  connect() {
+    _channel = ClientChannel(
+      'localhost',
+      port: 50051,
+      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+    );
+
+    _stub = TodoClient(_channel);
   }
 }
