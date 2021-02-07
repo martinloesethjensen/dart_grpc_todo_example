@@ -1,10 +1,10 @@
 # dart_grpc_todo_example
 
-Have [dart installed](https://dart.dev/get-dart). 
+Have [dart installed](https://dart.dev/get-dart).
 
 Activate `protoc` to generate stub files.
 
-```bash
+```sh
 pub global activate protoc_plugin
 ```
 
@@ -14,19 +14,19 @@ pub global activate protoc_plugin
 
 First get the packages
 
-```bash 
+```sh
 pub get
 ```
 
 Start the server
 
-```bash 
+```sh
 dart bin/server.dart
 ```
 
-Run client with args 
+Run client with args
 
-```bash 
+```sh
 dart bin/client.dart {1|2|3|4|5|6}
 ```
 
