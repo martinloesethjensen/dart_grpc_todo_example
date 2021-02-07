@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: todo.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.7
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
 
@@ -42,51 +42,43 @@ class TodoClient extends $grpc.Client {
       ($0.TodoItem value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.TodoItem.fromBuffer(value));
 
-  TodoClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  TodoClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions options,
+      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.voidNoParam> createTodo($0.TodoItem request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$createTodo, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+    return $createUnaryCall(_$createTodo, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.voidNoParam> createTodoItems($0.TodoItems request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$createTodoItems, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+    return $createUnaryCall(_$createTodoItems, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.voidNoParam> createTodosStream(
       $async.Stream<$0.TodoItem> request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(_$createTodosStream, request, options: options);
-    return $grpc.ResponseFuture(call);
+    return $createStreamingCall(_$createTodosStream, request, options: options)
+        .single;
   }
 
   $grpc.ResponseFuture<$0.TodoItems> readTodos($0.voidNoParam request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(_$readTodos, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+    return $createUnaryCall(_$readTodos, request, options: options);
   }
 
   $grpc.ResponseStream<$0.TodoItem> readTodosStream($0.voidNoParam request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(
+    return $createStreamingCall(
         _$readTodosStream, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseStream<$0.TodoItem> todoChat($async.Stream<$0.TodoItem> request,
       {$grpc.CallOptions options}) {
-    final call = $createCall(_$todoChat, request, options: options);
-    return $grpc.ResponseStream(call);
+    return $createStreamingCall(_$todoChat, request, options: options);
   }
 }
 

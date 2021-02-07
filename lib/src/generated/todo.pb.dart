@@ -2,15 +2,15 @@
 //  Generated code. Do not modify.
 //  source: todo.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.7
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class voidNoParam extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('voidNoParam', package: const $pb.PackageName('todoPackage'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'voidNoParam', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'todoPackage'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -18,8 +18,16 @@ class voidNoParam extends $pb.GeneratedMessage {
   factory voidNoParam() => create();
   factory voidNoParam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory voidNoParam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   voidNoParam clone() => voidNoParam()..mergeFromMessage(this);
-  voidNoParam copyWith(void Function(voidNoParam) updates) => super.copyWith((message) => updates(message as voidNoParam));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  voidNoParam copyWith(void Function(voidNoParam) updates) => super.copyWith((message) => updates(message as voidNoParam)) as voidNoParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static voidNoParam create() => voidNoParam._();
@@ -31,18 +39,38 @@ class voidNoParam extends $pb.GeneratedMessage {
 }
 
 class TodoItem extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TodoItem', package: const $pb.PackageName('todoPackage'), createEmptyInstance: create)
-    ..a<$core.int>(1, 'id', $pb.PbFieldType.O3)
-    ..aOS(2, 'text')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TodoItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'todoPackage'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
     ..hasRequiredFields = false
   ;
 
   TodoItem._() : super();
-  factory TodoItem() => create();
+  factory TodoItem({
+    $core.int id,
+    $core.String text,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (text != null) {
+      _result.text = text;
+    }
+    return _result;
+  }
   factory TodoItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory TodoItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   TodoItem clone() => TodoItem()..mergeFromMessage(this);
-  TodoItem copyWith(void Function(TodoItem) updates) => super.copyWith((message) => updates(message as TodoItem));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TodoItem copyWith(void Function(TodoItem) updates) => super.copyWith((message) => updates(message as TodoItem)) as TodoItem; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static TodoItem create() => TodoItem._();
@@ -72,17 +100,33 @@ class TodoItem extends $pb.GeneratedMessage {
 }
 
 class TodoItems extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TodoItems', package: const $pb.PackageName('todoPackage'), createEmptyInstance: create)
-    ..pc<TodoItem>(1, 'items', $pb.PbFieldType.PM, subBuilder: TodoItem.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TodoItems', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'todoPackage'), createEmptyInstance: create)
+    ..pc<TodoItem>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: TodoItem.create)
     ..hasRequiredFields = false
   ;
 
   TodoItems._() : super();
-  factory TodoItems() => create();
+  factory TodoItems({
+    $core.Iterable<TodoItem> items,
+  }) {
+    final _result = create();
+    if (items != null) {
+      _result.items.addAll(items);
+    }
+    return _result;
+  }
   factory TodoItems.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory TodoItems.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   TodoItems clone() => TodoItems()..mergeFromMessage(this);
-  TodoItems copyWith(void Function(TodoItems) updates) => super.copyWith((message) => updates(message as TodoItems));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TodoItems copyWith(void Function(TodoItems) updates) => super.copyWith((message) => updates(message as TodoItems)) as TodoItems; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static TodoItems create() => TodoItems._();
